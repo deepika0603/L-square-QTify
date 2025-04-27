@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Search.module.css";
-import { ReactComponent as SearchIcon } from "../../assets/search-icon.svg";
-import { useAutocomplete } from '@mui/material/useAutocomplete';
+import SearchIcon from "../../assets/search-icon.svg";
+import useAutocomplete from '@mui/material/useAutocomplete';
 import { styled } from "@mui/system";
 import { truncate } from "../../helpers/helpers";
 import { useNavigate } from "react-router-dom";
@@ -78,7 +78,7 @@ function Search({ searchData, placeholder }) {
         </div>
         <div>
           <button className={styles.searchButton} type="submit">
-            <SearchIcon />
+            <img src={SearchIcon} />
           </button>
         </div>
       </form>
