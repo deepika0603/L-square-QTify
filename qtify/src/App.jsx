@@ -3,11 +3,13 @@
 import Navbar from './components/Navbar/Navbar'
 //import viteLogo from '/vite.svg'
 import './App.css'
+import Hero from './components/Hero/Hero';
 
 function App() {
   return (
     <>
       <Navbar />
+      <Hero/>
     </>
   )
 }
