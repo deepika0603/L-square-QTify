@@ -8,9 +8,9 @@ export default function CarouselLeftNavigation() {
   const [isBeginning, setIsBeginning] = useState(swiper.isBeginning);
 
   // useEffect(() => {
-  // swiper.on("slideChange", function () {
-  // setIsBeginning(swiper.isBeginning);
-  // });
+  //   // swiper.on("slideChange", function () {
+  //   //   setIsBeginning(swiper.isBeginning);
+  //   // });
   // }, []);
 
   swiper.on("slideChange", function () {
