@@ -1,18 +1,16 @@
 .navbar {
-    background-color: var(--color-primary);
-    height: 50px;
-    width: 100vw;
-    padding: 0px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    position: fixed;  /* stick it */
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
+  background-color: var(--color-primary);
+  height: 74px;
+  width: 100vw;
+  padding: 0px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;  /* stick it */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
 
-    
-  }
-  
+
