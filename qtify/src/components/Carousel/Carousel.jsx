@@ -1,44 +1,55 @@
-import React, { useEffect, useRef } from "react";
+import { Navigation} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper";
-import { useSwiper } from "swiper/react";
-import styles from "./Carousel.module.css";
 import "swiper/css";
-import CarouselLeftNavigation from "./CarouselLeftNavigation/CarouselLeftNavigation";
-import CarouselRightNavigation from "./CarouselRightNavigation/CarouselRightNavigation";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import Card from "../Card/Card";
+import NextButton from "./NextButton/NextButton";
+import PrevButton from "./PrevButton/PrevButton";
+import styles from "./Carousel.module.css";
+import { useRef, useState, useEffect } from "react";
 
-const Controls = ({ data }) => {
-  const swiper = useSwiper();
+export default function Carousel({ items, type }) {
+  const swiperRef = useRef(null);
+  // For forceRe-rendering
+  const [triggerRender, setRender] = useState();
+ 
 
   useEffect(() => {
-    swiper.slideTo(0);
-  }, [data]);
+    setRender({});
+  }, []);
 
-  return <></>;
-};
-
-function Carousel({ data, renderComponent }) {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.swiper_wrapper}>
       <Swiper
-        style={{ padding: "0px 20px" }}
-        initialSlide={0}
-        modules={[Navigation]}
-        slidesPerView={"auto"}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        onSlideChange={(swiper) => {
+          setRender({});
+        }}
         spaceBetween={40}
+        modules={[Navigation]}
         allowTouchMove
+        slidesPerView={"auto"}
       >
-        <Controls data={data} />
-        <div>
-          <CarouselLeftNavigation />
-          <CarouselRightNavigation />
-        </div>
-        {data.map((ele) => (
-          <SwiperSlide>{renderComponent(ele)}</SwiperSlide>
-        ))}
-      </Swiper>
+        {items?.data 
+  ? items.data.map((item) => (
+      <SwiperSlide key={item.id}>
+        <Card item={item} type={type} />
+      </SwiperSlide>
+    ))
+  : Array.isArray(items) 
+    ? items.map((item) => (
+        <SwiperSlide key={item.id}>
+          <Card item={item} type={type} />
+        </SwiperSlide>
+      ))
+    : null}
+        
+      </Swiper>{" "}
+      <div className={styles.button_wrapper}>
+        <PrevButton className={styles.prev} swiper={swiperRef.current} />
+        <NextButton className={styles.next} swiper={swiperRef.current} />
+      </div>
     </div>
   );
 }
-
-export default Carousel;

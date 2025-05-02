@@ -1,29 +1,24 @@
-import React from "react";
-import { useOutletContext } from "react-router-dom";
-import { fetchFilters } from "../../api/api";
 import Hero from "../../components/Hero/Hero";
+import { useOutletContext } from "react-router";
 import Section from "../../components/Section/Section";
 import styles from "./HomePage.module.css";
+// import FilterTabs from "../../components/FilterTabs/FilterTabs";
+// import {useState} from "react";
+
 
 export default function HomePage() {
-  const { data } = useOutletContext();
-  const { newAlbums, topAlbums, songs, genres } = data;
-
-  console.log("genres", genres);
+  const { topAlbums, newAlbums, songs, genres } = useOutletContext();
+//   console.log(topAlbums)
+  
 
   return (
-    <>
+    <div className={styles.homepage_wrapper}>
       <Hero />
-      <div className={styles.wrapper}>
-        <Section title="Top Albums" data={topAlbums} type="album" />
-        <Section title="New Albums" data={newAlbums} type="album" />
-        <Section
-          title="Songs"
-          data={songs}
-          filterSource={fetchFilters}
-          type="song"
-        />
+      <Section data={topAlbums} title="Top Albums" type={"album"} />
+      <Section data={newAlbums} title="New Albums" type={"album"} />
+      <div className={styles.songs_wrapper}>
+        <Section songs={songs} title="Songs" type={"song"} genres={genres} className={styles.songs} />
       </div>
-    </>
+    </div>
   );
 }

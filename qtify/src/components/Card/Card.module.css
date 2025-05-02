@@ -1,46 +1,31 @@
-.wrapper {
+.card_wrapper {
   width: 160px;
+  background-color: var(--color-black);
 }
 
 .card {
   position: relative;
-  width: 160px;
+  border-radius: 15px;
+  overflow: hidden;
   height: 205px;
-  border-radius: 10px;
-  overflow: hidden;
-  /* cursor: grab; */
 }
 
-.banner {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 42px;
+.card img {
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.card_banner {
   background-color: var(--color-white);
-  display: flex;
-  align-items: center;
-  padding: 6px;
+  padding: 8px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
-.pill {
-  font-size: 12px;
-  background-color: var(--color-black);
-  width: max-content;
-  padding: 6px;
-  border-radius: 10px;
-}
-
-.titleWrapper {
-  margin-top: 6px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-}
-
-.chip {
-  background-color: var(--color-black);
-  color: white;
+.card_title {
+  color: var(--color-white);
+  font-size: 18px;
+  padding: 5px 0px;
 }

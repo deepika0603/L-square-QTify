@@ -1,59 +1,50 @@
-import { Chip, Tooltip } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Chip } from "@mui/material";
 import styles from "./Card.module.css";
+import { Link } from "react-router";
+import { truncate } from "../../helpers/helpers";
 
-function Card({ data, type }) {
-  const getCard = (type) => {
-    switch (type) {
-      case "album": {
-        const { image, follows, title, slug, songs } = data;
-        return (
-          <Tooltip title={`${songs.length} songs`} placement="top" arrow>
-            <Link to={`/album/${slug}`}>
-              <div className={styles.wrapper}>
-                <div className={styles.card}>
-                  <img src={image} alt="album" loading="lazy" />
-                  <div className={styles.banner}>
-                    <Chip
-                      label={`${follows} Follows`}
-                      size="small"
-                      className={styles.chip}
-                    />
-                  </div>
-                </div>
-                <div className={styles.titleWrapper}>
-                  <p>{title}</p>
-                </div>
-              </div>
-            </Link>
-          </Tooltip>
-        );
-      }
-      case "song": {
-        const { image, likes, title } = data;
+export default function Card({ item, type }) {
+  const dummyJson = {
+    id: "7853ba7d-ffa4-4c73-ad90-7e001c2787e3",
+    title: "Strident Analyst",
+    description:
+      "Quis ex rem tempore aperlam libero nobis.\nVoluptatibus omnis deleniti laborum minus fugiat molestiae iste consequuntur.",
+    follows: 8420,
+    image:
+      "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
+    slug: "strident-analyst",
+  };
 
-        return (
-          <div className={styles.wrapper}>
-            <div className={styles.card}>
-              <img src={image} alt="song" loading="lazy" />
-              <div className={styles.banner}>
-                <div className={styles.pill}>
-                  <p>{likes} Likes</p>
-                </div>
-              </div>
-            </div>
-            <div className={styles.titleWrapper}>
-              <p>{title}</p>
+  return (
+    <div className={styles.card_wrapper}>
+      {type !== "song" ? (
+        <Link to={`/album/${item.slug}`}>
+          <div className={styles.card}>
+            <img src={item.image} />
+            <div className={styles.card_banner}>
+              <Chip
+                size="small"
+                label={item.follows + " Follows"}
+                color="secondary"
+              />
             </div>
           </div>
-        );
-      }
-      default:
-        return <></>;
-    }
-  };
-  return getCard(type);
-}
+        </Link>
+      ) : (
+        <div className={styles.card}>
+          <img src={item.image} />
+          <div className={styles.card_banner}>
+            <Chip
+              size="small"
+              label={item.likes + " Likes"}
+              color="secondary"
+            />
+          </div>
+        </div>
+      )}
 
-export default Card;
+      <p className={styles.card_title}>{truncate(item.title)}</p>
+    </div>
+  );
+}

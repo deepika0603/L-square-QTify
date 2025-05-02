@@ -1,0 +1,10 @@
+.button {
+  cursor: pointer;
+  position: absolute;
+  right: -15px;
+  z-index: 2;
+}
+
+.hidden {
+  display: none;
+}

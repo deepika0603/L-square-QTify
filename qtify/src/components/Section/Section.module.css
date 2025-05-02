@@ -1,24 +1,46 @@
 .wrapper {
   display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 15px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 0px 30px 20px 30px;
+}
+
+.wrapper_songs {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 0px 30px 20px 30px;
 }
 
 .header {
   display: flex;
+  width: 100%;
+  align-items: center;
   justify-content: space-between;
-  align-items: baseline;
 }
 
-.toggleText {
-  cursor: pointer;
+.collapse_button {
   color: var(--color-primary);
 }
 
-.cardsWrapper {
-  margin-top: 18px;
+.collapse_button:hover {
+  cursor: pointer;
 }
 
-.filterWrapper {
-  margin-top: 15px;
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 0px 15px;
+}
+
+.progress_bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 0px 15px;
 }

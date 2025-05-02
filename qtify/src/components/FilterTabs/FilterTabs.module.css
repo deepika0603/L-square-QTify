@@ -1,0 +1,11 @@
+.filter_wrapper {
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 0px 15px;
+}
